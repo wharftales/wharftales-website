@@ -257,7 +257,7 @@
                 </svg>
                 Download on GitHub
             </a>
-            <a href="https://docs.wharftales.org" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            <a href="https://docs.wharftales.com" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                 View Documentation
             </a>
         </div>
@@ -270,7 +270,7 @@
                 <?php
                 // Fetch GitHub stars
                 $stars = null;
-                $github_repo = 'giodc/wharftales';
+                $github_repo = 'wharftales/wharftales';
                 
                 try {
                     $context = stream_context_create([
