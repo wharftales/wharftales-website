@@ -299,5 +299,6 @@
             </span>
         </div>
     </div>
+    <script data-site-id="site_37a8811a2a01811e5b91791d0d5f666e" src="http://analytics.wharftales.org/track.js"></script>
 </body>
 </html>
