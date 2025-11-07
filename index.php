@@ -176,8 +176,8 @@
 </svg>
         <h1>WharfTales</h1>
         <p class="tagline">Run your sites easily.</p>
-        <p class="subtitle">Deploy WordPress, Php, and Laravel sites on Docker.</p>
-
+        <p class="subtitle">With WharfTales, you can run multiple WordPress, Php, and Laravel sites on the same server, all with Let's Encrypt SSL certificate. Run on any clouds, or locally. Free and open source.</p>
+        
         <div class="stats">
             <?php
             // Fetch stats from API
@@ -262,6 +262,8 @@
             </a>
         </div>
 
+        <p class="subtitle">Download and documentation coming soon. Was nice to add few buttons :).</p>
+
         <div class="github-stars">
             <svg class="star-icon" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
@@ -298,6 +300,9 @@
                 ?>
             </span>
         </div>
+
+
+
     </div>
     <script data-site-id="site_37a8811a2a01811e5b91791d0d5f666e" src="https://analytics.wharftales.org/track.js"></script>
 </body>
