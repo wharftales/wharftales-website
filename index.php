@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,24 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+
+        #wharflist-form {
+            margin-top: 1rem;
+            text-align: center !important;
+        }
+
+        div#wharflist-widget {
+            margin: auto;
+        }
+
+        .signup {
+            margin-top: 3rem;
+            font-size: 1.25rem;
+        }
+
+        .hidden {
+            display: none;
         }
 
         .container {
@@ -146,6 +165,8 @@
             font-size: 0.875rem;
         }
 
+
+
         @media (max-width: 640px) {
             h1 {
                 font-size: 2.5rem;
@@ -169,21 +190,41 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <svg width="48" height="48" id="Logo" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <path fill="black" d="M651.36,159.58c-174.5,0-319.2,127.49-346.09,294.4-22.4-8.08-46.56-12.49-71.75-12.49-116.79,0-211.46,94.68-211.46,211.46s94.68,211.46,211.46,211.46l417.84-3.66c193.62,0,350.59-156.96,350.59-350.59s-156.96-350.59-350.59-350.59ZM758.92,431.26c-19.21,0-34.78-15.57-34.78-34.78s15.57-34.78,34.78-34.78,34.78,15.57,34.78,34.78-15.57,34.78-34.78,34.78Z"/>
-</svg>
+        <svg width="48" height="48" id="Logo" data-name="Logo" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1024 1024">
+            <path fill="black"
+                d="M651.36,159.58c-174.5,0-319.2,127.49-346.09,294.4-22.4-8.08-46.56-12.49-71.75-12.49-116.79,0-211.46,94.68-211.46,211.46s94.68,211.46,211.46,211.46l417.84-3.66c193.62,0,350.59-156.96,350.59-350.59s-156.96-350.59-350.59-350.59ZM758.92,431.26c-19.21,0-34.78-15.57-34.78-34.78s15.57-34.78,34.78-34.78,34.78,15.57,34.78,34.78-15.57,34.78-34.78,34.78Z" />
+        </svg>
         <h1>WharfTales</h1>
         <p class="tagline">Run your sites easily.</p>
-        <p class="subtitle">With WharfTales, you can run multiple WordPress, Php, and Laravel sites on the same server, all with Let's Encrypt SSL certificate. Run on any clouds, or locally. Free and open source.</p>
-        
+        <p class="subtitle">With WharfTales, you can run multiple WordPress, Php, and Laravel sites on the same server,
+            all with Let's Encrypt SSL certificate. Run on any clouds, or locally. Free and open source.</p>
+
+             <div class="signup">
+            <p>Sign up for updates</p>
+            <!-- WharfList Subscription Form -->
+            <div id='wharflist-form'></div>
+            <script>
+                (function () {
+                    var script = document.createElement('script');
+                    script.src = 'https://list.wharftales.org/widget.js';
+                    script.setAttribute('data-api-key', '8e2475b9041356e596625d802708896a063fe12a6544a51352b77ecc9149d93d');
+                    script.setAttribute('data-site-id', '1');
+                    document.head.appendChild(script);
+                })();
+            </script>
+        </div>
+
+
         <div class="stats">
             <?php
             // Fetch stats from API
             $stats = null;
             $error = null;
-            
+
             try {
                 $context = stream_context_create([
                     'http' => [
@@ -191,9 +232,9 @@
                         'ignore_errors' => true
                     ]
                 ]);
-                
+
                 $response = @file_get_contents('https://telemetry.wharftales.org/api/stats', false, $context);
-                
+
                 if ($response !== false) {
                     $stats = json_decode($response, true);
                 }
@@ -204,7 +245,7 @@
 
             <div class="stat">
                 <div class="stat-value">
-                    <?php 
+                    <?php
                     if ($stats && isset($stats['active_installations'])) {
                         echo number_format($stats['active_installations']);
                     } else {
@@ -216,23 +257,23 @@
             </div>
 
             <?php /*
-            <div class="stat">
-                <div class="stat-value">
-                    <?php 
-                    if ($stats && isset($stats['total_installations'])) {
-                        echo number_format($stats['total_installations']);
-                    } else {
-                        echo '<span class="loading">—</span>';
-                    }
-                    ?>
-                </div>
-                <div class="stat-label">Total Installations</div>
-            </div>
-            */ ?>
+       <div class="stat">
+           <div class="stat-value">
+               <?php 
+               if ($stats && isset($stats['total_installations'])) {
+                   echo number_format($stats['total_installations']);
+               } else {
+                   echo '<span class="loading">—</span>';
+               }
+               ?>
+           </div>
+           <div class="stat-label">Total Installations</div>
+       </div>
+       */ ?>
 
             <div class="stat">
                 <div class="stat-value">
-                    <?php 
+                    <?php
                     if ($stats && isset($stats['total_sites'])) {
                         echo number_format($stats['total_sites']);
                     } else {
@@ -250,30 +291,36 @@
 
 
 
+
         <div class="buttons">
-            <a href="https://github.com/wharftales/wharftales" class="btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/wharftales/" class="btn" target="_blank" rel="noopener noreferrer">
                 <svg class="star-icon" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
                 </svg>
-                Download on GitHub
+                Follow on GitHub
             </a>
             <a href="https://docs.wharftales.com" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                 View Documentation
             </a>
         </div>
 
-        <p class="subtitle">Download and documentation coming soon. Was nice to add few buttons :).</p>
+       
+
+        <div class="subtitle">
+        </div>
 
         <div class="github-stars">
             <svg class="star-icon" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                <path
+                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
             </svg>
             <span id="stars-count">
                 <?php
                 // Fetch GitHub stars
                 $stars = null;
                 $github_repo = 'wharftales/wharftales';
-                
+
                 try {
                     $context = stream_context_create([
                         'http' => [
@@ -283,9 +330,9 @@
                             'ignore_errors' => true
                         ]
                     ]);
-                    
+
                     $github_response = @file_get_contents("https://api.github.com/repos/{$github_repo}", false, $context);
-                    
+
                     if ($github_response !== false) {
                         $github_data = json_decode($github_response, true);
                         if (isset($github_data['stargazers_count'])) {
@@ -295,7 +342,7 @@
                 } catch (Exception $e) {
                     // Silent fail
                 }
-                
+
                 echo $stars ? "{$stars} stars" : "Star on GitHub";
                 ?>
             </span>
@@ -305,7 +352,9 @@
 
     </div>
 
-    <script data-site-id="site_37a8811a2a01811e5b91791d0d5f666e" src="https://analytics.wharftales.org/track.js"></script>
-    
+    <script data-site-id="site_37a8811a2a01811e5b91791d0d5f666e"
+        src="https://analytics.wharftales.org/track.js"></script>
+
 </body>
+
 </html>
